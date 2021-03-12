@@ -169,4 +169,46 @@ public class ImageDAO {
 		}
 		return result;
 	}
+	//4.-1이미지 파일 수정 (변경)-수정,파일명
+	public int update(ImageVO vo) throws Exception {
+		int result = 0;
+		try {
+			
+			con = DBInfo.getConnection();
+			pstmt = con.prepareStatement(DBSQL.IMAGE_UPDATE_FILE);
+			pstmt.setString(1,vo.getFileName());
+			pstmt.setLong(2,vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Exception("이미지 파일 수정 DB 처리 중 오류 발생");
+		}finally{
+			DBInfo.close(con, pstmt);
+		}
+		return result;
+	}
+	//5.이미지 파일 삭제
+	public int delete(Long no) throws Exception {
+		int result = 0;
+		try {
+			
+			con = DBInfo.getConnection();
+			pstmt = con.prepareStatement(DBSQL.IMAGE_DELETE);
+			
+			pstmt.setLong(1,no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Exception("이미지 삭제 DB 처리 중 오류 발생");
+		}finally{
+			DBInfo.close(con, pstmt);
+		}
+		return result;
+	}
 }
