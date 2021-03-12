@@ -38,6 +38,6 @@ vo.setFileName(path + fileName);
 //DB처리
 ExeService.execute(Beans.get(AuthorityFilter.url),vo);
 //자동이동
-response.sendRedirect("list.jsp");
+response.sendRedirect("list.jsp?page=1&perPageNum=" + multi.getParameter("perPageNum"));
 
 %>
