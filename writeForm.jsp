@@ -49,6 +49,7 @@ $(function () {
 <h1>이미지 등록</h1>
 <!-- 파일첨부 하는 입력에는 반드시 post방식이어야 하고, enctype을 지정해야만 함,input tag type="file" 로 지정 -->
 <form action="write.jsp" method="post" enctype="multipart/form-data" id="writeForm">
+	<input name="perPageNum" value="${param.perPageNum }" type="hidden">
 	<div class="form-group">
 	<label for=title>제목</label>
 	<input name="title" id="title" class="form-control" />
